@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Portal Académico de Sociología y Teoría Social. Proyecto formativo para estudiantes de Ingeniería en Sistemas. Ciencia, Historia, Precursores y Enfoques Teóricos.">
+  <meta name="author" content="Equipo de Estudiantes de Ingeniería en Sistemas">
+  <title>Portal Académico de Sociología | Ingeniería en Sistemas</title>
+
+  <!-- Estilos y Tipografías -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+</head>
+
+<body>
+
+  <!-- =========================================================================
+       1. HEADER Y MENÚ DE NAVEGACIÓN SEMÁNTICO (<header>, <nav>)
+       ========================================================================= -->
+  <header class="header-nav" id="mainHeader">
+    <div class="container header-container">
+      <a href="#inicio" class="logo-brand" title="Volver al Inicio">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <span>Socio<strong style="color: var(--accent-primary);">Sistemas</strong></span>
+      </a>
+
+      <!-- Menú de navegación principal accesible -->
+      <nav id="navMenu" class="nav-menu" aria-label="Navegación principal">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#modulo1" class="nav-link">Módulo 1: Ciencia</a>
+        <a href="#modulo2" class="nav-link">Módulo 2: Concepto</a>
+        <a href="#modulo3" class="nav-link">Módulo 3: Historia</a>
+        <a href="#modulo4" class="nav-link">Módulo 4: Precursores</a>
+        <a href="#modulo5" class="nav-link">Módulo 5: Corrientes</a>
+        <a href="#evaluacion" class="nav-link" style="color: var(--accent-secondary); font-weight: 700;">Quiz
+          Interactivo</a>
+      </nav>
+
+      <!-- Botones de Acción (Búsqueda, Tema Oscuro, Menú Móvil) -->
+      <div class="header-actions">
+        <button id="openSearchBtn" class="btn-icon" title="Buscar en el portal (Ctrl + K)"
+          aria-label="Buscar contenido">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button id="themeToggleBtn" class="btn-icon" title="Cambiar tema claro/oscuro" aria-label="Modo de color">
+          <span id="themeIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <button id="menuToggleBtn" class="btn-icon menu-toggle" title="Abrir menú" aria-expanded="false"
+          aria-label="Abrir menú de navegación">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modal de Búsqueda Rápida (Ctrl + K) -->
+  <div id="searchModal" class="search-modal" role="dialog" aria-modal="true" aria-label="Buscador rápido de conceptos">
+    <div class="search-box">
+      <div class="search-input-wrapper">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-light)" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput"
+          placeholder="Buscar por autor, teoría, método (ej: Marx, Comte, AGIL, Hechos Sociales)..." autocomplete="off">
+        <button id="closeSearchBtn"
+          style="background: transparent; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+      </div>
+      <div id="searchResults" class="search-results-container"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER (<main>)
+       ========================================================================= -->
+  <main>
+
+    <!-- =======================================================================
+         SECCIÓN 1: INICIO / HOME
+         ======================================================================= -->
+    <section id="inicio" class="hero-section page-view active-view">
+      <div class="container">
+        <div class="hero-content">
+          <span class="badge-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+            Proyecto Formativo Académico • Cátedra de Sociología
+          </span>
+
+          <h1 class="hero-title">
+            Portal Académico de <span class="gradient-text">Sociología y Teoría Social</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Una plataforma interactiva diseñada por estudiantes de <strong>Ingeniería en Sistemas</strong>,
+            dedicada al análisis riguroso de la ciencia social, sus precursores históricos,
+            sus paradigmas epistemológicos y el impacto de las tecnologías digitales en las estructuras de la sociedad
+            moderna.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#modulo1" class="btn btn-primary">
+              Comenzar Exploración
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#evaluacion" class="btn btn-secondary">
+              Realizar Autoevaluación
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tarjeta de Presentación del Equipo de Estudiantes -->
+        <div class="team-card">
+          <div class="team-header">
+            <div>
+              <span class="module-number">Presentación Institucional</span>
+              <h3 style="margin-bottom: 0.2rem;">Equipo de Investigación y Desarrollo Digital</h3>
+            </div>
+          </div>
+
+          <div class="team-grid">
+            <!-- Estudiante 1 -->
+            <article class="student-card">
+              <div class="student-avatar">DA</div>
+              <div class="student-info">
+                <h4>Denis Andrade</h4>
+                <div class="student-role">Líder de Proyecto & Desarrollador Web</div>
+              </div>
+            </article>
+
+            <!-- Estudiante 2 -->
+            <article class="student-card">
+              <div class="student-avatar"
+                style="background: linear-gradient(135deg, var(--accent-secondary), #0f766e);">ES</div>
+              <div class="student-info">
+                <h4>Estefany Elizabeth Amaya Amaya</h4>
+                <div class="student-role">Arquitectura de Información & UI/UX</div>
+              </div>
+            </article>
+
+            <!-- Estudiante 3 -->
+            <article class="student-card">
+              <div class="student-avatar" style="background: linear-gradient(135deg, var(--accent-purple), #6d28d9);">ES
+              </div>
+              <div class="student-info">
+                <h4>Dina Iveth Sanchez Amaya</h4>
+                <div class="student-role">Investigación Teórica & Contenidos</div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Metadatos de la Asignatura -->
+          <div class="academic-meta-box">
+            <div class="academic-meta-item">
+              <strong>Cátedra:</strong>
+              <span>Sociología General</span>
+            </div>
+            <div class="academic-meta-item">
+              <strong>Carrera:</strong>
+              <span>Ingeniería en Sistemas y redes informáticas</span>
+            </div>
+            <div class="academic-meta-item">
+              <strong>Docente:</strong>
+              <span>Kevin Francisco Muñoz Paniagua</span>
+            </div>
+            <div class="academic-meta-item">
+              <strong>Ciclo:</strong>
+              <span>Ciclo II 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fin de Sección / Comenzar Recorrido -->
+        <div class="module-finish-container">
+          <div class="module-finish-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Portal Académico Listo
+          </div>
+          <h3 class="module-finish-title">Comenzar el Programa de Sociología</h3>
+          <button type="button" class="btn-single-next" data-target="modulo1">
+            <span>Siguiente Módulo: Ciencia y Ciencias Sociales</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECCIÓN 2: MÓDULO 1 - CIENCIA Y CIENCIAS SOCIALES
+         ======================================================================= -->
+    <section id="modulo1" class="module-section page-view">
+      <div class="container">
+        <header class="section-header">
+          <span class="module-number">Módulo 1</span>
+          <h2>Ciencia y Ciencias Sociales</h2>
+          <p class="section-lead">
+            Delimitación epistemológica entre el saber científico y el conocimiento cotidiano,
+            evolución histórica de las ciencias humanas y su ubicación en la jerarquía del saber.
+          </p>
+        </header>
+
+        <!-- 1.1 Delimitación: Ciencia vs. Sentido Común -->
+        <h3 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          1.1 Delimitación: Conocimiento Científico vs. Sentido Común
+        </h3>
+
+        <div class="comparison-table-wrapper">
+          <table class="table-custom">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Criterio Epistemológico</th>
+                <th style="width: 37.5%;">
+                  <span class="badge-tag-sm badge-science">Conocimiento Científico</span>
+                </th>
+                <th style="width: 37.5%;">
+                  <span class="badge-tag-sm badge-common">Sentido Común / Cotidiano</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Definición y Naturaleza</strong></td>
+                <td>Conjunto de conocimientos racionales, objetivos, metódicos, analíticos, sistemáticos, explicativos y
+                  predictivos.</td>
+                <td>Saber empírico, intuitivo y espontáneo que surge de la experiencia inmediata del individuo en su
+                  vida cotidiana.</td>
+              </tr>
+              <tr>
+                <td><strong>Método y Validación</strong></td>
+                <td>Aplica rigurosamente el <strong>método científico</strong>: observación planificada,
+                  experimentación, contrastación empírica y verificación de hipótesis.</td>
+                <td>No sigue una metodología sistemática; se apoya en tradiciones orales, hábitos, creencias populares y
+                  tanteos.</td>
+              </tr>
+              <tr>
+                <td><strong>Objetividad vs. Subjetividad</strong></td>
+                <td>Aspira a la objetividad, buscando despojarse de juicios de valor, sesgos personales y prenociones no
+                  comprobadas.</td>
+                <td>Altamente subjetivo; suele estar cargado de prejuicios, preconceptos e interpretaciones parciales de
+                  la realidad.</td>
+              </tr>
+              <tr>
+                <td><strong>Alcance y Predictibilidad</strong></td>
+                <td>Formula leyes generales y modelos explicativos con capacidad predictiva sobre los fenómenos.</td>
+                <td>Limitado al entorno particular e inmediato; carece de capacidad para explicar causas estructurales
+                  profundas.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 1.2 Surgimiento e Historia de las Ciencias Sociales -->
+        <div class="content-card" style="margin-bottom: 3rem;">
+          <div class="card-accent-top"></div>
+          <div class="card-icon-header">
+            <div class="card-icon">🏛️</div>
+            <div>
+              <h3 style="margin: 0;">Surgimiento e Historia de las Ciencias Sociales</h3>
+              <p style="margin: 0; font-size: 0.88rem; color: var(--text-light);">De la filosofía clásica a la
+                consolidación post-revolucionaria</p>
+            </div>
+          </div>
+
+          <p>
+            Las Ciencias Sociales surgieron formalmente con el objetivo de <strong>analizar al ser humano en su
+              dimensión social y cultural</strong>.
+            Su trayectoria abarca tres grandes momentos de maduración intelectual:
+          </p>
+
+          <div class="grid-3">
+            <div
+              style="background: var(--bg-tertiary); padding: 1.25rem; border-radius: var(--radius-md); border-left: 3px solid var(--accent-indigo);">
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">1. Antecedentes Clásicos</h4>
+              <p style="font-size: 0.88rem; margin: 0;">
+                Se originan en las reflexiones filosóficas y políticas de la Antigüedad griega (<strong>Platón</strong>
+                y <strong>Aristóteles</strong>),
+                donde la sociedad era analizada desde una perspectiva ética y normativa sobre el orden ideal de la
+                polis.
+              </p>
+            </div>
+
+            <div
+              style="background: var(--bg-tertiary); padding: 1.25rem; border-radius: var(--radius-md); border-left: 3px solid var(--accent-secondary);">
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">2. Renacimiento e Ilustración</h4>
+              <p style="font-size: 0.88rem; margin: 0;">
+                Durante los siglos XV y XVI (Renacimiento) y el siglo XVIII (Siglo de las Luces o Ilustración),
+                se propuso utilizar la <strong>razón y el conocimiento empírico</strong> frente al dogma teológico y la
+                ignorancia medieval.
+              </p>
+            </div>
+
+            <div
+              style="background: var(--bg-tertiary); padding: 1.25rem; border-radius: var(--radius-md); border-left: 3px solid var(--accent-rose);">
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">3. Consolidación Científica</h4>
+              <p style="font-size: 0.88rem; margin: 0;">
+                Con acontecimientos como la <strong>Revolución Francesa</strong> y la <strong>Revolución
+                  Industrial</strong>,
+                nació la urgencia de estudiar sistemáticamente los fenómenos humanos, adaptando inicialmente métodos de
+                las ciencias de la naturaleza.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1.3 Clasificación de las Ciencias y Jerarquía de Comte -->
+        <div class="grid-2" style="margin-bottom: 3rem;">
+          <div class="content-card">
+            <div class="card-icon-header">
+              <div class="card-icon">📊</div>
+              <div>
+                <h3 style="margin: 0;">Clasificación de las Ciencias</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-light);">Ubicación de las Ciencias Sociales
+                </p>
+              </div>
+            </div>
+
+            <p style="font-size: 0.95rem;">
+              En el marco epistemológico contemporáneo, las ciencias que se enfocan en la actividad humana se dividen
+              funcionalmente en:
+            </p>
+
+            <ul style="font-size: 0.92rem;">
+              <li style="margin-bottom: 0.75rem;">
+                <strong>Ciencias que estudian al hombre social:</strong>
+                Se enfocan en la génesis, evolución y manifestaciones del ser humano en comunidad:
+                <span class="code-badge">Antropología</span>, <span class="code-badge">Sociología</span> e <span
+                  class="code-badge">Historia</span>.
+              </li>
+              <li>
+                <strong>Ciencias producto de la actividad del hombre social:</strong>
+                Analizan los sistemas, estructuras e instituciones creadas por la interacción colectiva:
+                <span class="code-badge">Economía</span>, <span class="code-badge">Derecho</span> y <span
+                  class="code-badge">Ciencia Política</span>.
+              </li>
+            </ul>
+
+            <div
+              style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm); margin-top: 1rem; font-size: 0.88rem;">
+              <strong>Ramas Auxiliares:</strong> La <span class="code-badge">Demografía</span> (análisis estadístico de
+              poblaciones) y la <span class="code-badge">Geografía Humana</span> (interrelación entre comunidades
+              humanas y su medio biofísico).
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-icon-header">
+              <div class="card-icon">🔺</div>
+              <div>
+                <h3 style="margin: 0;">Jerarquía Científica (Auguste Comte)</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-light);">De lo más general y simple a lo más
+                  complejo</p>
+              </div>
+            </div>
+
+            <p style="font-size: 0.9rem;">
+              Auguste Comte propuso una ordenación piramidal de las ciencias positivas según su orden histórico de
+              aparición y grado creciente de complejidad:
+            </p>
+
+            <!-- Pirámide Visual de Comte -->
+            <div class="comte-pyramid-container">
+              <div class="pyramid-tier tier-6" title="Nivel 6: La ciencia más compleja y cúspide del saber positivo">
+                👑 Sociología ("Física Social")
+              </div>
+              <div class="pyramid-tier tier-5" title="Nivel 5: Estudio de los organismos vivos">
+                🌱 Biología
+              </div>
+              <div class="pyramid-tier tier-4" title="Nivel 4: Estudio de la composición de la materia">
+                🧪 Química
+              </div>
+              <div class="pyramid-tier tier-3" title="Nivel 3: Estudio de las fuerzas y energía">
+                ⚡ Física
+              </div>
+              <div class="pyramid-tier tier-2" title="Nivel 2: Mecánica celeste y leyes del cosmos">
+                🔭 Mecánica / Astronomía
+              </div>
+              <div class="pyramid-tier tier-1" title="Nivel 1: Base fundamental abstracta de todo el saber">
+                📐 Matemáticas (Base Fundamental)
+              </div>
+            </div>
+
+            <p style="font-size: 0.82rem; color: var(--text-light); text-align: center; margin: 0;">
+              Comte ubicó a la Sociología en la cima por abordar los fenómenos más complejos, sustentándose
+              metodológicamente en las ciencias que la preceden.
+            </p>
+          </div>
+        </div>
+
+        <!-- 1.4 Disciplinas Principales -->
+        <h3 style="margin-bottom: 1.25rem;">Disciplinas Principales del Campo Social</h3>
+        <div class="grid-3">
+          <div class="content-card">
+            <h4 style="color: var(--accent-primary);">Sociología</h4>
+            <p style="font-size: 0.88rem; margin: 0;">Análisis científico de la sociedad humana, grupos, dinámicas de
+              interacción y fenómenos estructurales colectivos.</p>
+          </div>
+          <div class="content-card">
+            <h4 style="color: var(--accent-secondary);">Economía</h4>
+            <p style="font-size: 0.88rem; margin: 0;">Estudio metódico de la producción, distribución, intercambio y
+              consumo de bienes y servicios para satisfacer necesidades humanas.</p>
+          </div>
+          <div class="content-card">
+            <h4 style="color: var(--accent-indigo);">Derecho</h4>
+            <p style="font-size: 0.88rem; margin: 0;">Sistema de normas jurídicas que rige la convivencia humana y
+              regula las conductas e instituciones sociales de forma vinculante.</p>
+          </div>
+          <div class="content-card">
+            <h4 style="color: var(--accent-amber);">Historia</h4>
+            <p style="font-size: 0.88rem; margin: 0;">Estudio sistemático de los acontecimientos y procesos del pasado
+              humano para comprender la génesis del presente.</p>
+          </div>
+          <div class="content-card">
+            <h4 style="color: var(--accent-purple);">Antropología</h4>
+            <p style="font-size: 0.88rem; margin: 0;">Estudio holístico de la humanidad, pueblos antiguos, modernos, su
+              diversidad biológica, lingüística y patrones culturales.</p>
+          </div>
+          <div class="content-card">
+            <h4 style="color: var(--accent-rose);">Ciencia Política</h4>
+            <p style="font-size: 0.88rem; margin: 0;">Análisis de la teoría y práctica del gobierno, el ejercicio de la
+              autoridad, la toma de decisiones y las relaciones de poder estatal.</p>
+          </div>
+        </div>
+
+        <!-- Fin del Módulo 1 -->
+        <div class="module-finish-container">
+          <div class="module-finish-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Módulo 1 Finalizado
+          </div>
+          <h3 class="module-finish-title">Fin del Módulo 1: Ciencia y Ciencias Sociales</h3>
+          <p class="module-finish-desc">
+            Has completado las bases de la clasificación científica y el rol de las ciencias sociales. Avanza para
+            conocer la definición, objeto y campos de la Sociología.
+          </p>
+          <button type="button" class="btn-single-next" data-target="modulo2">
+            <span>Siguiente: Módulo 2 (Conceptualización de la Sociología)</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECCIÓN 3: MÓDULO 2 - CONCEPTUALIZACIÓN DE LA SOCIOLOGÍA
+         ======================================================================= -->
+    <section id="modulo2" class="module-section page-view">
+      <div class="container">
+        <header class="section-header">
+          <span class="module-number">Módulo 2</span>
+          <h2>Conceptualización de la Sociología</h2>
+          <p class="section-lead">
+            Definición integral, perspectivas de pensadores canónicos, objeto y campo de acción,
+            niveles de análisis micro/macro y relación de complementariedad disciplinaria.
+          </p>
+        </header>
+
+        <!-- Definición Central -->
+        <div class="content-card" style="margin-bottom: 2.5rem; border-left: 4px solid var(--accent-primary);">
+          <h3 style="margin-bottom: 0.75rem;">¿Qué es la Sociología?</h3>
+          <p style="font-size: 1.05rem; line-height: 1.8;">
+            La <strong>Sociología</strong> es la ciencia social encargada del <strong>análisis científico de la sociedad
+              humana</strong>,
+            las estructuras colectivas, las relaciones entre individuos, los grupos, las instituciones y los fenómenos
+            colectivos resultantes
+            de la interacción continua. Indaga cómo los contextos sociales modelan las percepciones y conductas de las
+            personas,
+            y cómo estas, a su vez, construyen y transforman la realidad social.
+          </p>
+        </div>
+
+        <!-- Visiones Canónicas de Pensadores -->
+        <h3 style="margin-bottom: 1.25rem;">Visiones Canónicas sobre la Definición de la Sociología</h3>
+        <div class="grid-3" style="margin-bottom: 3rem;">
+          <div class="content-card">
+            <h4 style="color: var(--accent-primary);">Auguste Comte</h4>
+            <p style="font-size: 0.9rem;">
+              Ciencia positiva orientada a descubrir las leyes fundamentales del <em>orden</em> (<strong>estática
+                social</strong>)
+              y del <em>progreso</em> (<strong>dinámica social</strong>) mediante el método empírico.
+            </p>
+          </div>
+
+          <div class="content-card">
+            <h4 style="color: var(--accent-secondary);">Émile Durkheim</h4>
+            <p style="font-size: 0.9rem;">
+              Ciencia de las instituciones, de su génesis y de su funcionamiento, cuyo objeto central y exclusivo
+              es el estudio objetivo de los <strong>hechos sociales</strong> tratados "como cosas".
+            </p>
+          </div>
+
+          <div class="content-card">
+            <h4 style="color: var(--accent-indigo);">Max Weber</h4>
+            <p style="font-size: 0.9rem;">
+              Ciencia que busca <strong>comprender interpretativamente (Verstehen)</strong> la <strong>acción
+                social</strong>
+              para llegar a una explicación causal de su desarrollo y de sus efectos subjetivos.
+            </p>
+          </div>
+
+          <div class="content-card">
+            <h4 style="color: var(--accent-rose);">Karl Marx</h4>
+            <p style="font-size: 0.9rem;">
+              Ciencia crítica y transformadora encargada de develar las leyes que rigen las <strong>estructuras
+                económicas</strong>,
+              la lucha de clases y las relaciones de dominación en los modos de producción.
+            </p>
+          </div>
+
+          <div class="content-card">
+            <h4 style="color: var(--accent-purple);">Pierre Bourdieu</h4>
+            <p style="font-size: 0.9rem;">
+              Análisis sistemático de las formas invisibles de dominación y reproducción social
+              a través de la articulación entre el <strong>habitus</strong> (disposiciones incorporadas) y los
+              <strong>campos sociales</strong>.
+            </p>
+          </div>
+
+          <div class="content-card">
+            <h4 style="color: var(--accent-amber);">Anthony Giddens</h4>
+            <p style="font-size: 0.9rem;">
+              Estudio de la vida social moderna que plantea la <strong>dualidad de la estructura</strong>:
+              los individuos actúan condicionados por la estructura, pero con su propia agencia también la reproducen y
+              transforman.
+            </p>
+          </div>
+        </div>
+
+        <!-- Objeto, Campo de Acción y Niveles Micro/Macro -->
+        <div class="grid-2" style="margin-bottom: 3rem;">
+          <div class="content-card">
+            <div class="card-icon-header">
+              <div class="card-icon">🎯</div>
+              <div>
+                <h3 style="margin: 0;">Objeto de Estudio Fundamental</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-light);">Dimensiones medulares del análisis
+                  sociológico</p>
+              </div>
+            </div>
+            <ul style="font-size: 0.92rem;">
+              <li style="margin-bottom: 0.8rem;">
+                <strong>Los Hechos Sociales:</strong> Formas de actuar, pensar y sentir exteriores al individuo,
+                dotadas de un poder coercitivo en virtud del cual se le imponen (Durkheim).
+              </li>
+              <li style="margin-bottom: 0.8rem;">
+                <strong>La Acción Social:</strong> Conducta humana en la que el sentido mentado por el sujeto
+                está referido a la conducta de otros, orientándose por esta en su desarrollo (Weber).
+              </li>
+              <li>
+                <strong>Estructuras y Procesos Sociales:</strong> La sociedad, sus grupos, estratificación,
+                dinámicas de cambio acelerado y mecanismos de conservación y cohesión institucional.
+              </li>
+            </ul>
+          </div>
+
+          <div class="content-card">
+            <div class="card-icon-header">
+              <div class="card-icon">🔬</div>
+              <div>
+                <h3 style="margin: 0;">Niveles de Análisis y Campo de Acción</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-light);">Perspectiva Micro vs. Macro
+                  sociológica</p>
+              </div>
+            </div>
+            <div
+              style="margin-bottom: 1rem; background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm);">
+              <strong>Nivel Micro (Microsociología):</strong>
+              <p style="margin: 0; font-size: 0.88rem;">Se concentra en la interacción social cara a cara en la vida
+                diaria, el significado de los gestos, la dinámica de pequeños grupos y la formación de identidades.</p>
+            </div>
+            <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm);">
+              <strong>Nivel Macro (Macrosociología):</strong>
+              <p style="margin: 0; font-size: 0.88rem;">Examina grandes estructuras, sistemas económicos, Estados,
+                movimientos sociales globales, estratificación de clases y transiciones demográficas a gran escala.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Relación con otras Disciplinas -->
+        <div class="content-card">
+          <div class="card-accent-top"></div>
+          <h3 style="margin-bottom: 0.5rem;">Relación con otras Disciplinas Sociales</h3>
+          <p style="font-size: 0.92rem; margin-bottom: 1.5rem;">
+            La Sociología no opera en aislamiento; mantiene una relación de reciprocidad teórica y empírica con las
+            demás ramas de las ciencias humanas:
+          </p>
+
+          <div class="grid-2">
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <span class="code-badge" style="font-size: 1rem; padding: 4px 10px;">📜 Historia</span>
+              <p style="font-size: 0.9rem; margin: 0;">
+                Se apoya en la <strong>Historia</strong> para comprender la evolución temporal de las estructuras,
+                contextualizando la génesis de las normas actuales y evitando generalizaciones ahistóricas.
+              </p>
+            </div>
+
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <span class="code-badge" style="font-size: 1rem; padding: 4px 10px;">📈 Economía</span>
+              <p style="font-size: 0.9rem; margin: 0;">
+                Se vincula a la <strong>Economía</strong> al examinar cómo los modos de producción, el mercado de
+                trabajo y la distribución de recursos materiales condicionan las relaciones colectivas y las
+                desigualdades.
+              </p>
+            </div>
+
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <span class="code-badge" style="font-size: 1rem; padding: 4px 10px;">🗿 Antropología</span>
+              <p style="font-size: 0.9rem; margin: 0;">
+                Colabora con la <strong>Antropología</strong> para analizar los sistemas de símbolos, el parentesco, las
+                identidades étnicas y las expresiones culturales tanto tradicionales como urbanas.
+              </p>
+            </div>
+
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <span class="code-badge" style="font-size: 1rem; padding: 4px 10px;">⚖️ Ciencia Política</span>
+              <p style="font-size: 0.9rem; margin: 0;">
+                Se coordina con la <strong>Ciencia Política</strong> para estudiar la distribución del poder, la
+                legitimidad de las formas de dominación, las políticas públicas, la ciudadanía y el rol del Estado.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fin del Módulo 2 -->
+        <div class="module-finish-container">
+          <div class="module-finish-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Módulo 2 Finalizado
+          </div>
+          <h3 class="module-finish-title">Fin del Módulo 2: Conceptualización de la Sociología</h3>
+          <p class="module-finish-desc">
+            Has revisado el objeto de estudio, la definición y la relación interdisciplinaria de la sociología. Pasa al
+            contexto histórico que originó esta disciplina.
+          </p>
+          <button type="button" class="btn-single-next" data-target="modulo3">
+            <span>Siguiente: Módulo 3 (Desarrollo Histórico de la Sociología)</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECCIÓN 4: MÓDULO 3 - DESARROLLO HISTÓRICO DE LA SOCIOLOGÍA
+         ======================================================================= -->
+    <section id="modulo3" class="module-section page-view">
+      <div class="container">
+        <header class="section-header">
+          <span class="module-number">Módulo 3</span>
+          <h2>Desarrollo Histórico de la Sociología</h2>
+          <p class="section-lead">
+            Contexto sociohistórico de surgimiento: El impacto decisivo de la <strong>Ilustración</strong>,
+            la <strong>Revolución Francesa</strong> y la <strong>Revolución Industrial</strong> en el nacimiento de la
+            ciencia de la sociedad.
+          </p>
+        </header>
+
+        <!-- COMPONENTE INTERACTIVO 1: LÍNEA DE TIEMPO HISTÓRICA -->
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <span class="badge-tag">Componente Interactivo 1</span>
+          <h3 style="margin-bottom: 0.5rem;">Línea de Tiempo del Contexto de Surgimiento</h3>
+          <p style="color: var(--text-muted); font-size: 0.94rem;">Filtra por acontecimiento para examinar el papel de
+            cada proceso en la génesis de la sociología:</p>
+        </div>
+
+        <div class="timeline-controls">
+          <button class="timeline-filter-btn active" data-filter="all">Todos los Contextos</button>
+          <button class="timeline-filter-btn" data-filter="ilustracion">La Ilustración</button>
+          <button class="timeline-filter-btn" data-filter="francesa">Revolución Francesa</button>
+          <button class="timeline-filter-btn" data-filter="industrial">Revolución Industrial</button>
+        </div>
+
+        <div class="timeline-wrapper" id="timelineWrapper">
+
+          <!-- Hito 1: La Ilustración -->
+          <article class="timeline-item left" data-era="ilustracion">
+            <div class="timeline-node"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">Siglo XVIII • El Siglo de las Luces</span>
+              <h4 style="margin-bottom: 0.35rem; color: var(--accent-primary);">1. La Ilustración</h4>
+              <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">
+                <strong>Transformación Racional e Intelectual:</strong> Sentó las bases racionales y del método
+                científico
+                frente al pensamiento teológico, dogmático o meramente especulativo.
+              </p>
+              <ul style="font-size: 0.84rem; padding-left: 1.1rem; margin: 0; color: var(--text-muted);">
+                <li>Consagración de la razón humana secular como guía para entender el mundo.</li>
+                <li>Crítica radical a la superstición, al oscurantismo y a las verdades reveladas incuestionables.</li>
+                <li>Surgimiento de la convicción de que las leyes que gobiernan a la sociedad humana pueden ser
+                  investigadas empíricamente para promover el progreso social.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Hito 2: La Revolución Francesa -->
+          <article class="timeline-item right" data-era="francesa">
+            <div class="timeline-node"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">1789 – 1799 • París, Francia</span>
+              <h4 style="margin-bottom: 0.35rem; color: var(--accent-secondary);">2. La Revolución Francesa</h4>
+              <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">
+                <strong>Transformación Política, Jurídica e Ideológica:</strong> Desmanteló el modelo feudal y la
+                monarquía absoluta
+                de derecho divino, dando paso al Estado-República, la Declaración de los Derechos del Hombre y al auge
+                de la burguesía.
+              </p>
+              <ul style="font-size: 0.84rem; padding-left: 1.1rem; margin: 0; color: var(--text-muted);">
+                <li>Ruptura violenta y definitiva del orden estamental tradicional.</li>
+                <li>Generación de una profunda conmoción social y anarquía política que amenazaba la estabilidad civil.
+                </li>
+                <li>Creó la imperiosa necesidad de una nueva ciencia teórica que explicara las leyes del <em>orden
+                    social</em> y la recomposición de los lazos comunitarios.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Hito 3: La Revolución Industrial -->
+          <article class="timeline-item left" data-era="industrial">
+            <div class="timeline-node"></div>
+            <div class="timeline-card">
+              <span class="timeline-date">Siglos XVIII y XIX • Gran Bretaña y Europa</span>
+              <h4 style="margin-bottom: 0.35rem; color: var(--accent-rose);">3. La Revolución Industrial</h4>
+              <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">
+                <strong>Transformación Económica, Tecnológica y Laboral:</strong> Introdujo la tecnología a vapor,
+                la mecanización en gran escala y consolidó el capitalismo mercantil e industrial.
+              </p>
+              <ul style="font-size: 0.84rem; padding-left: 1.1rem; margin: 0; color: var(--text-muted);">
+                <li>División estructural polarizada entre la <strong>burguesía</strong> (dueños del capital y medios
+                  fabriles) y el <strong>proletariado</strong> (obreros asalariados).</li>
+                <li>Éxodo masivo campesino hacia las ciudades fabriles, hacinamiento, precariedad higiénica y jornadas
+                  laborales de hasta 16 horas.</li>
+                <li>Aparición de agudas tensiones obreras y protestas colectivas que requerían explicaciones científicas
+                  sistemáticas.</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Cuadro Comparativo Síntesis de los 3 Acontecimientos Fundacionales -->
+        <div style="margin-top: 3rem;">
+          <h3 style="text-align: center; margin-bottom: 1.5rem;">Síntesis de los Tres Pilares del Surgimiento
+            Sociológico</h3>
+          <div class="grid-3">
+
+            <div class="content-card">
+              <div class="card-accent-top" style="background: linear-gradient(90deg, var(--accent-primary), #60a5fa);">
+              </div>
+              <div class="card-icon-header">
+                <div class="card-icon">💡</div>
+                <div>
+                  <h4 style="margin: 0;">La Ilustración</h4>
+                  <span class="code-badge">Plano Epistemológico</span>
+                </div>
+              </div>
+              <p style="font-size: 0.9rem;">
+                Aportó la <strong>metodología secular y racional</strong>: la creencia de que la sociedad no está
+                predestinada por designios divinos, sino gobernada por leyes cognoscibles que el ser humano puede
+                descubrir y perfeccionar mediante el método científico.
+              </p>
+            </div>
+
+            <div class="content-card">
+              <div class="card-accent-top"
+                style="background: linear-gradient(90deg, var(--accent-secondary), #14b8a6);"></div>
+              <div class="card-icon-header">
+                <div class="card-icon">🏛️</div>
+                <div>
+                  <h4 style="margin: 0;">Revolución Francesa</h4>
+                  <span class="code-badge">Plano Político-Social</span>
+                </div>
+              </div>
+              <p style="font-size: 0.9rem;">
+                Aportó la <strong>demanda de orden y reconstrucción</strong>: al colapsar las viejas instituciones
+                feudales y monárquicas, evidenció la necesidad de una ciencia capaz de restaurar la cohesión social y
+                fundar un nuevo consenso cívico sobre bases positivas.
+              </p>
+            </div>
+
+            <div class="content-card">
+              <div class="card-accent-top" style="background: linear-gradient(90deg, var(--accent-rose), #f43f5e);">
+              </div>
+              <div class="card-icon-header">
+                <div class="card-icon">⚙️</div>
+                <div>
+                  <h4 style="margin: 0;">Revolución Industrial</h4>
+                  <span class="code-badge">Plano Económico-Material</span>
+                </div>
+              </div>
+              <p style="font-size: 0.9rem;">
+                Aportó los <strong>conflictos materiales y la cuestión social</strong>: el surgimiento del proletariado,
+                la explotación fabril, la urbanización acelerada y la lucha de clases, fenómenos palpables que se
+                convirtieron en el objeto de investigación urgente.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Fin del Módulo 3 -->
+        <div class="module-finish-container">
+          <div class="module-finish-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Módulo 3 Finalizado
+          </div>
+          <h3 class="module-finish-title">Fin del Módulo 3: Desarrollo Histórico</h3>
+          <p class="module-finish-desc">
+            Comprendiste las tres revoluciones germinales: la Ilustración, la Revolución Francesa y la Revolución
+            Industrial. Continúa con los pensadores clásicos.
+          </p>
+          <button type="button" class="btn-single-next" data-target="modulo4">
+            <span>Siguiente: Módulo 4 (Precursores y Exponentes)</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECCIÓN 5: MÓDULO 4 - PRECURSORES Y EXPONENTES DE LA SOCIOLOGÍA
+         ======================================================================= -->
+    <section id="modulo4" class="module-section page-view">
+      <div class="container">
+        <header class="section-header">
+          <span class="module-number">Módulo 4</span>
+          <h2>Precursores y Exponentes Canónicos</h2>
+          <p class="section-lead">
+            Perfiles bio-bibliográficos, aportes epistemológicos y conceptos cardinales de los pensadores
+            que forjaron los cimientos de la teoría social clásica.
+          </p>
+        </header>
+
+        <div class="grid-3">
+
+          <!-- 1. Henri de Saint-Simon -->
+          <article class="author-card">
+            <div>
+              <div class="author-top">
+                <div class="author-initials">SS</div>
+                <div>
+                  <h3 class="author-name">Henri de Saint-Simon</h3>
+                  <span class="author-dates">1760 – 1825 • Francia</span>
+                </div>
+              </div>
+              <div class="author-quote">
+                "La sociedad debe ser tratada como un cuerpo organizado: requiere una fisiología social."
+              </div>
+              <ul style="font-size: 0.9rem; padding-left: 1.1rem;">
+                <li>Considerado padre del <strong>socialismo utópico</strong> y precursor directo de la sociología
+                  científica.</li>
+                <li>Propuso una <strong>fisiología social</strong> o "física social" para analizar los fenómenos
+                  colectivos con el rigor de las ciencias naturales.</li>
+                <li>Promovió una reorganización social guiada por la industria, la ciencia y la
+                  <strong>tecnocracia</strong>, desplazando a las clases ociosas (nobleza y clero).
+                </li>
+              </ul>
+            </div>
+            <div class="author-concepts">
+              <span class="concept-chip">Fisiología Social</span>
+              <span class="concept-chip">Tecnocracia</span>
+              <span class="concept-chip">Industrialismo</span>
+            </div>
+          </article>
+
+          <!-- 2. Auguste Comte -->
+          <article class="author-card">
+            <div>
+              <div class="author-top">
+                <div class="author-initials"
+                  style="background: linear-gradient(135deg, var(--accent-secondary), #0d9488);">AC</div>
+                <div>
+                  <h3 class="author-name">Auguste Comte</h3>
+                  <span class="author-dates">1798 – 1857 • Francia</span>
+                </div>
+              </div>
+              <div class="author-quote">
+                "Saber para prever, prever para poder. Amor por principio, orden por base, progreso por fin."
+              </div>
+              <ul style="font-size: 0.9rem; padding-left: 1.1rem;">
+                <li><strong>Padre del Positivismo</strong> y quien acuñó formalmente el término "Sociología" en 1838.
+                </li>
+                <li>Formuló la <strong>Ley de los Tres Estados</strong> sobre la evolución del pensamiento humano:
+                  <ul style="margin: 0.3rem 0; font-size: 0.85rem;">
+                    <li><strong>Teológico:</strong> Explicaciones basadas en dioses o espíritus sobrenaturales.</li>
+                    <li><strong>Metafísico:</strong> Explicaciones fundamentadas en esencias y fuerzas abstractas.</li>
+                    <li><strong>Positivo:</strong> Fundado en la observación empírica y leyes invariables.</li>
+                  </ul>
+                </li>
+                <li>Dividió la ciencia en <strong>Estática Social</strong> (orden) y <strong>Dinámica Social</strong>
+                  (progreso).</li>
+              </ul>
+            </div>
+            <div class="author-concepts">
+              <span class="concept-chip">Positivismo</span>
+              <span class="concept-chip">Tres Estados</span>
+              <span class="concept-chip">Física Social</span>
+            </div>
+          </article>
+
+          <!-- 3. Herbert Spencer -->
+          <article class="author-card">
+            <div>
+              <div class="author-top">
+                <div class="author-initials"
+                  style="background: linear-gradient(135deg, var(--accent-purple), #7c3aed);">HS</div>
+                <div>
+                  <h3 class="author-name">Herbert Spencer</h3>
+                  <span class="author-dates">1820 – 1903 • Inglaterra</span>
+                </div>
+              </div>
+              <div class="author-quote">
+                "La sociedad es semejante a un organismo biológico que pasa de lo simple a lo complejo."
+              </div>
+              <ul style="font-size: 0.9rem; padding-left: 1.1rem;">
+                <li>Postuló y popularizó la doctrina del <strong>Darwinismo Social</strong> y la "supervivencia del más
+                  apto".</li>
+                <li>Desarrolló la <strong>analogía orgánica</strong>: concebía a la sociedad como un cuerpo biológico
+                  cuyos componentes ("órganos e instituciones") se interrelacionan para sostener el todo.</li>
+                <li>Defendió un individualismo estricto y la no intervención del Estado en los procesos evolutivos
+                  naturales de la sociedad.</li>
+              </ul>
+            </div>
+            <div class="author-concepts">
+              <span class="concept-chip">Darwinismo Social</span>
+              <span class="concept-chip">Organicismo</span>
+              <span class="concept-chip">Evolución</span>
+            </div>
+          </article>
+
+          <!-- 4. Émile Durkheim -->
+          <article class="author-card">
+            <div>
+              <div class="author-top">
+                <div class="author-initials" style="background: linear-gradient(135deg, var(--accent-amber), #d97706);">
+                  ED</div>
+                <div>
+                  <h3 class="author-name">Émile Durkheim</h3>
+                  <span class="author-dates">1858 – 1917 • Francia</span>
+                </div>
+              </div>
+              <div class="author-quote">
+                "La primera regla y la más fundamental es considerar los hechos sociales como cosas."
+              </div>
+              <ul style="font-size: 0.9rem; padding-left: 1.1rem;">
+                <li>Fundador de la <strong>sociología académica</strong> y piedra angular del Estructural Funcionalismo.
+                </li>
+                <li>Definió los <strong>Hechos Sociales</strong> bajo tres atributos indispensables:
+                  <ul style="margin: 0.3rem 0; font-size: 0.85rem;">
+                    <li><strong>Exterioridad:</strong> Existen fuera de la conciencia individual previa.</li>
+                    <li><strong>Coercitividad:</strong> Ejercen presión y coerción sobre la conducta.</li>
+                    <li><strong>Generalidad:</strong> Están presentes en todo el cuerpo colectivo.</li>
+                  </ul>
+                </li>
+                <li>Investigaciones seminales: <em>El Suicidio</em> (anomia social) y <em>La división del trabajo
+                    social</em> (solidaridad mecánica y orgánica).</li>
+              </ul>
+            </div>
+            <div class="author-concepts">
+              <span class="concept-chip">Hecho Social</span>
+              <span class="concept-chip">Anomia</span>
+              <span class="concept-chip">Solidaridad Orgánica</span>
+            </div>
+          </article>
+
+          <!-- 5. Karl Marx -->
+          <article class="author-card">
+            <div>
+              <div class="author-top">
+                <div class="author-initials" style="background: linear-gradient(135deg, var(--accent-rose), #e11d48);">
+                  KM</div>
+                <div>
+                  <h3 class="author-name">Karl Marx</h3>
+                  <span class="author-dates">1818 – 1883 • Alemania</span>
+                </div>
+              </div>
+              <div class="author-quote">
+                "Los filósofos se han limitado a interpretar el mundo de distintos modos; de lo que se trata es de
+                transformarlo."
+              </div>
+              <ul style="font-size: 0.9rem; padding-left: 1.1rem;">
+                <li>Fundador del <strong>Materialismo Histórico</strong> y la teoría del conflicto estructural.</li>
+                <li>Tesis central: <em>"La historia de la humanidad es la historia de la lucha de clases"</em>
+                  (Burguesía vs. Proletariado en el capitalismo).</li>
+                <li>Obras maestras: <em>El Manifiesto Comunista</em> (1848) y <em>El Capital</em> (1867).</li>
+                <li>Conceptos clave: <strong>Infraestructura económica</strong> (base material),
+                  <strong>Superestructura</strong> (derecho, política e ideología), <strong>Plusvalía</strong>
+                  (apropiación de trabajo impago) y <strong>Alienación</strong>.
+                </li>
+              </ul>
+            </div>
+            <div class="author-concepts">
+              <span class="concept-chip">Lucha de Clases</span>
+              <span class="concept-chip">Plusvalía</span>
+              <span class="concept-chip">Infraestructura</span>
+            </div>
+          </article>
+
+          <!-- 6. Max Weber -->
+          <article class="author-card">
+            <div>
+              <div class="author-top">
+                <div class="author-initials" style="background: linear-gradient(135deg, #0284c7, #0369a1);">MW</div>
+                <div>
+                  <h3 class="author-name">Max Weber</h3>
+                  <span class="author-dates">1864 – 1920 • Alemania</span>
+                </div>
+              </div>
+              <div class="author-quote">
+                "La sociología es una ciencia que pretende entender, interpretándola, la acción social."
+              </div>
+              <ul style="font-size: 0.9rem; padding-left: 1.1rem;">
+                <li>Máximo exponente de la <strong>Sociología Comprensiva</strong> (método <em>Verstehen</em>).</li>
+                <li>Creó la herramienta metodológica de los <strong>Tipos Ideales</strong> (modelos teóricos puros para
+                  comparar y contrastar la realidad empírica).</li>
+                <li>Tipos de Dominación Legítima: <strong>Carismática</strong> (heroísmo/gracia),
+                  <strong>Tradicional</strong> (costumbres patriarcales) y <strong>Racional-Legal</strong> (burocracia
+                  moderna).
+                </li>
+                <li>Obra clásica: <em>La ética protestante y el espíritu del capitalismo</em> (vinculación entre
+                  calvinismo y racionalidad económica).</li>
+              </ul>
+            </div>
+            <div class="author-concepts">
+              <span class="concept-chip">Verstehen</span>
+              <span class="concept-chip">Tipos Ideales</span>
+              <span class="concept-chip">Burocracia</span>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Fin del Módulo 4 -->
+        <div class="module-finish-container">
+          <div class="module-finish-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Módulo 4 Finalizado
+          </div>
+          <h3 class="module-finish-title">Fin del Módulo 4: Precursores y Exponentes</h3>
+          <p class="module-finish-desc">
+            Revisaste las tesis de Saint-Simon, Comte, Spencer, Marx, Durkheim y Weber. Pasa a profundizar en las
+            grandes corrientes teóricas.
+          </p>
+          <button type="button" class="btn-single-next" data-target="modulo5">
+            <span>Siguiente: Módulo 5 (Principales Corrientes y Teorías)</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECCIÓN 6: MÓDULO 5 - PRINCIPALES CORRIENTES Y TEORÍAS SOCIOLÓGICAS
+         ======================================================================= -->
+    <section id="modulo5" class="module-section page-view">
+      <div class="container">
+        <header class="section-header">
+          <span class="module-number">Módulo 5</span>
+          <h2>Principales Corrientes y Teorías Sociológicas</h2>
+          <p class="section-lead">
+            Exposición comparativa y análisis crítico de los grandes paradigmas sociológicos:
+            Positivismo, Materialismo Histórico, Funcionalismo, Teoría del Conflicto, Escuela de Frankfurt y Sociología
+            Comprensiva.
+          </p>
+        </header>
+
+        <!-- COMPONENTE INTERACTIVO 2: MATRIZ COMPARATIVA -->
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <span class="badge-tag">Componente Interactivo 2</span>
+          <h3 style="margin-bottom: 0.5rem;">Matriz Comparativa Dinámica de Paradigmas</h3>
+          <p style="color: var(--text-muted); font-size: 0.94rem;">Selecciona una corriente para explorar su objeto,
+            método, tesis central y crítica académica:</p>
+        </div>
+
+        <div class="matrix-tabs" role="tablist" aria-label="Selector de corrientes sociológicas">
+          <button class="matrix-tab-btn active" data-theory="positivismo" role="tab">Positivismo</button>
+          <button class="matrix-tab-btn" data-theory="materialismo" role="tab">Materialismo Histórico</button>
+          <button class="matrix-tab-btn" data-theory="funcionalismo" role="tab">Estructural Funcionalismo</button>
+          <button class="matrix-tab-btn" data-theory="conflicto" role="tab">Teoría del Conflicto</button>
+          <button class="matrix-tab-btn" data-theory="critica" role="tab">Teoría Crítica (Frankfurt)</button>
+          <button class="matrix-tab-btn" data-theory="comprensiva" role="tab">Sociología Comprensiva</button>
+        </div>
+
+        <!-- Tarjeta donde se inyecta la información comparada dinámicamente -->
+        <div id="matrixDisplayCard" class="matrix-display-card">
+          <!-- Renderizado automático desde app.js -->
+        </div>
+
+        <!-- ACORDEONES DIDÁCTICOS PARA PROFUNDIZACIÓN TEÓRICA -->
+        <div style="margin-top: 3.5rem;">
+          <h3 style="margin-bottom: 0.5rem; text-align: center;">Profundización en Modelos y Esquemas Conceptuales</h3>
+          <p style="text-align: center; color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem;">Haz clic
+            en cada panel para desplegar los detalles analíticos de las teorías:</p>
+
+          <div class="accordion-group">
+
+            <!-- Acordeón 1: Esquema AGIL de Talcott Parsons -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>⚙️ El Esquema AGIL de Talcott Parsons (Estructural Funcionalismo)</span>
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div class="accordion-content">
+                <p>Talcott Parsons postuló que todo sistema social, para sobrevivir y mantenerse en equilibrio dinámico,
+                  debe resolver cuatro imperativos o requisitos funcionales esenciales:</p>
+                <div class="grid-2" style="margin-top: 1rem;">
+                  <div
+                    style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-primary);">
+                    <strong>A - Adaptación (Adaptation):</strong>
+                    <p style="margin: 0; font-size: 0.88rem;">Capacidad del sistema de extraer recursos de su entorno
+                      biofísico y distribuirlos entre sus partes. Es la función desempeñada primariamente por el
+                      <em>subsistema económico</em>.
+                    </p>
+                  </div>
+                  <div
+                    style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-secondary);">
+                    <strong>G - Goal Attainment (Alcanzar Metas):</strong>
+                    <p style="margin: 0; font-size: 0.88rem;">Capacidad de definir objetivos colectivos y movilizar
+                      recursos y energía social para alcanzarlos. Es la función del <em>subsistema político</em> (Estado
+                      y gobierno).</p>
+                  </div>
+                  <div
+                    style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-indigo);">
+                    <strong>I - Integración (Integration):</strong>
+                    <p style="margin: 0; font-size: 0.88rem;">Regulación, coordinación y cohesión de las interrelaciones
+                      entre los miembros del sistema para prevenir el conflicto anárquico. Cumplida por el <em>derecho y
+                        las normas comunitarias</em>.</p>
+                  </div>
+                  <div
+                    style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-amber);">
+                    <strong>L - Latencia (Latency / Mantenimiento de Pautas):</strong>
+                    <p style="margin: 0; font-size: 0.88rem;">Mantenimiento y renovación de las motivaciones
+                      individuales y los valores culturales compartidos. Realizada por la <em>familia, la educación y la
+                        religión</em>.</p>
+                  </div>
+                </div>
+                <div style="margin-top: 1rem; font-size: 0.85rem; color: var(--error);">
+                  <strong>Crítica académica al funcionalismo:</strong> Se le reprocha su conservadurismo intrínseco,
+                  considerar al ser humano como un simple "títere" interiorizador de normas y ser incapaz de explicar
+                  las rupturas y revoluciones sociales.
+                </div>
+              </div>
+            </div>
+
+            <!-- Acordeón 2: Modos de Producción de Marx -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>🏭 Los Modos de Producción Históricos (Materialismo Histórico)</span>
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div class="accordion-content">
+                <p>Para Karl Marx y Friedrich Engels, la base de toda sociedad radica en su <strong>modo de
+                    producción</strong> (la articulación dialéctica entre las fuerzas productivas y las relaciones
+                  sociales de producción). La contradicción entre el desarrollo técnico y las relaciones de dominación
+                  engendra el cambio histórico:</p>
+                <ol style="font-size: 0.92rem;">
+                  <li style="margin-bottom: 0.5rem;"><strong>Comunismo Primitivo:</strong> Propiedad colectiva de los
+                    medios de producción rudimentarios, sin excedente económico permanente ni división en clases
+                    sociales antagónicas.</li>
+                  <li style="margin-bottom: 0.5rem;"><strong>Esclavismo:</strong> Aparición de la propiedad privada
+                    sobre la tierra y sobre los propios seres humanos (amo vs. esclavo, como en la Antigüedad
+                    greco-romana).</li>
+                  <li style="margin-bottom: 0.5rem;"><strong>Feudalismo:</strong> Relación de servidumbre vinculada a la
+                    tierra; el señor feudal extrae renta y tributo del siervo campesino.</li>
+                  <li style="margin-bottom: 0.5rem;"><strong>Capitalismo:</strong> Separación entre el capital y el
+                    trabajo. La burguesía posee los medios de producción industrial y el proletariado desposeído vende
+                    su fuerza de trabajo a cambio de un salario, generándose la <strong>plusvalía</strong> (fuente del
+                    beneficio capitalista).</li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- Acordeón 3: Los 4 Tipos Ideales de Acción Social de Weber -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>🧠 Los Cuatro Tipos Ideales de Acción Social (Max Weber)</span>
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div class="accordion-content">
+                <p>Weber clasificó la acción social según el sentido y motivo subjetivo que orienta la conducta del
+                  individuo:</p>
+                <div class="grid-2" style="margin-top: 1rem;">
+                  <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm);">
+                    <h5 style="color: var(--accent-primary); font-size: 0.95rem; margin-bottom: 0.3rem;">1. Racional con
+                      arreglo a fines (Zweckrationalität)</h5>
+                    <p style="margin: 0; font-size: 0.88rem;">Determinada por el cálculo deliberado y riguroso de
+                      costo-beneficio, donde los medios son seleccionados con precisión para alcanzar un objetivo
+                      concreto (ejemplo: la gestión de un proyecto de software en ingeniería).</p>
+                  </div>
+                  <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm);">
+                    <h5 style="color: var(--accent-secondary); font-size: 0.95rem; margin-bottom: 0.3rem;">2. Racional
+                      con arreglo a valores (Wertrationalität)</h5>
+                    <p style="margin: 0; font-size: 0.88rem;">Guiada por la convicción incondicional y ética en un valor
+                      supremo (moral, religioso o político), independientemente de las consecuencias o costos prácticos
+                      que acarree.</p>
+                  </div>
+                  <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm);">
+                    <h5 style="color: var(--accent-rose); font-size: 0.95rem; margin-bottom: 0.3rem;">3. Acción Afectiva
+                      / Emocional</h5>
+                    <p style="margin: 0; font-size: 0.88rem;">Motivada directamente por impulsos emotivos, estados de
+                      ánimo del momento, pasiones o arranques pasionales de cólera o júbilo.</p>
+                  </div>
+                  <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-sm);">
+                    <h5 style="color: var(--accent-amber); font-size: 0.95rem; margin-bottom: 0.3rem;">4. Acción
+                      Tradicional</h5>
+                    <p style="margin: 0; font-size: 0.88rem;">Determinada por la costumbre arraigada, hábitos mecánicos
+                      heredados y la inercia cultural del "siempre se ha hecho así".</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Acordeón 4: Teoría Crítica y la Industria Cultural -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>📻 La Escuela de Frankfurt y la Crítica a la Industria Cultural</span>
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Filósofos como <strong>Theodor Adorno</strong> y <strong>Max Horkheimer</strong> denunciaron que la
+                  modernidad ilustrada
+                  degeneró en una <em>razón instrumental</em> calculadora. La cultura, el arte y el entretenimiento
+                  fueron subordinados
+                  a la lógica mercantil de la producción fabril:
+                </p>
+                <ul style="font-size: 0.9rem;">
+                  <li><strong>Mercantilización del espíritu:</strong> Los bienes culturales se producen como mercancías
+                    estandarizadas para generar ganancias y adormecer la conciencia crítica de los ciudadanos.</li>
+                  <li><strong>Conformismo pasivo:</strong> El consumo masificado de productos culturales homogéneos
+                    produce una ilusión de libertad pero refuerza la integración pacífica del individuo en el orden
+                    establecido.</li>
+                  <li><strong>Vigencia en la era de los algoritmos:</strong> Esta crítica es de vital trascendencia para
+                    los ingenieros en sistemas que diseñan feeds de redes sociales, plataformas de streaming y modelos
+                    de monetización de la atención humana.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Fin del Módulo 5 -->
+        <div class="module-finish-container">
+          <div class="module-finish-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Módulo 5 Finalizado
+          </div>
+          <h3 class="module-finish-title">Fin del Módulo 5: Principales Corrientes y Teorías</h3>
+          <p class="module-finish-desc">
+            Has completado todos los contenidos teóricos del programa formativo. Pon a prueba tus aprendizajes con el
+            Quiz Interactivo.
+          </p>
+          <button type="button" class="btn-single-next" data-target="evaluacion">
+            <span>Ir a la Evaluación: Quiz Formativo</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECCIÓN 7: COMPONENTE INTERACTIVO 3 - QUIZ DE AUTOEVALUACIÓN
+         ======================================================================= -->
+    <section id="evaluacion" class="module-section page-view"
+      style="background: radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.05), transparent 50%);">
+      <div class="container">
+        <header class="section-header">
+          <span class="module-number">Evaluación Formativa</span>
+          <h2>Quiz de Autoevaluación Interactiva</h2>
+          <p class="section-lead">
+            Pon a prueba tu comprensión de los 5 módulos temáticos.
+            Cuestionario formativo con retroalimentación explicativa inmediata en cada respuesta.
+          </p>
+        </header>
+
+        <div class="quiz-container">
+
+          <!-- Vista Activa de la Pregunta -->
+          <div id="quizActiveView">
+            <div class="quiz-progress-bar">
+              <div id="quizProgressBar" class="quiz-progress-fill"></div>
+            </div>
+
+            <div class="quiz-question-header">
+              <span id="quizQuestionNumber" class="quiz-question-number">Pregunta 1 de 9</span>
+              <span class="code-badge">Rigor Conceptual</span>
+            </div>
+
+            <h3 id="quizQuestionText" class="quiz-question-text">Cargando pregunta...</h3>
+
+            <div id="quizOptionsList" class="quiz-options-list">
+              <!-- Opciones dinámicas -->
+            </div>
+
+            <div id="quizFeedbackCard" class="quiz-feedback-card"></div>
+
+            <div class="quiz-footer-actions">
+              <button id="quizNextBtn" class="btn btn-primary" disabled>
+                Siguiente Pregunta
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Vista de Resultados Finales -->
+          <div id="quizResultView" class="quiz-result-view">
+            <span class="badge-tag"
+              style="background: var(--success-bg); color: var(--success); border-color: var(--success);">
+              Evaluación Concluida
+            </span>
+            <h3 style="margin-top: 0.5rem; font-size: 1.6rem;">Resultado de la Autoevaluación</h3>
+
+            <div class="quiz-score-circle">
+              <span id="quizScoreNumber">100%</span>
+              <span>Puntaje</span>
+            </div>
+
+            <div id="quizFeedbackSummary"></div>
+
+            <!-- GIF de Felicitación -->
+            <img id="quizCelebrationGif" src="gif/dancing-cat-33.gif" alt="¡Felicitaciones!"
+              style="display: none; max-width: 180px; margin: 1rem auto; border-radius: 8px;">
+
+            <button id="quizRestartBtn" class="btn btn-primary" style="margin-top: 1.5rem;">
+
+              Reiniciar Evaluación
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="1 4 1 10 7 10"></polyline>
+                <polyline points="23 20 23 14 17 14"></polyline>
+                <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+              </svg>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Fin del Recorrido Formativo -->
+        <div class="module-finish-container">
+          <div class="module-finish-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Recorrido Académico Concluido
+          </div>
+          <h3 class="module-finish-title">Fin del Programa de Sociología</h3>
+          <p class="module-finish-desc">
+            Has completado satisfactoriamente los 5 módulos temáticos y la evaluación formativa de la asignatura de
+            Sociología para Ingeniería en Sistemas.
+          </p>
+          <button type="button" class="btn-single-next" data-target="inicio">
+            <span>Volver al Inicio del Portal</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       FOOTER INSTITUCIONAL Y REFERENCIAS (<footer>)
+       ========================================================================= -->
+
+
+  <!-- Lógica JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>
